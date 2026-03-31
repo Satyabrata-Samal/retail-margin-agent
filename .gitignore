@@ -1,3 +1,4 @@
-/project_plan
 /venv
-
+.env
+/tests
+/notes
