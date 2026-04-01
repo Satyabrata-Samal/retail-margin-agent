@@ -1,3 +1,4 @@
 langgraph
 anthropic
 supabase
+dotenv

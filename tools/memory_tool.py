@@ -1,10 +1,3 @@
-"""
-Production-ready memory tool handler for Claude's memory_20250818 tool.
-
-This implementation provides secure, client-side execution of memory operations
-with path validation, error handling, and comprehensive security measures.
-"""
-
 import shutil
 from pathlib import Path
 from typing import Any
@@ -360,3 +353,5 @@ class MemoryToolHandler:
             return {"success": "All memory cleared successfully"}
         except Exception as e:
             return {"error": f"Cannot clear memory: {e}"}
+
+    
