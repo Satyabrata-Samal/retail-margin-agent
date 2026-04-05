@@ -1,0 +1,7 @@
+{
+  "to": "raj.mehta@diageo.com",
+  "subject": "Re: Invoice YCCP-41 - Dispute Resolution",
+  "body": "Dear Raj,\n\nThank you for raising your dispute regarding invoice YCCP-41 for Captain Morgan Tiki Mango & Pineapple/Apple 700ml (TPNB: 87742417) for week 202612.\n\nWe have completed a thorough review of this transaction against our sales records and promotional agreements. Our findings confirm that the original invoice amount is correct:\n\n**INVOICE DETAILS:**\n- Product: CAPTAIN MORGAN TIKI MANGO & P/APPLE 700ML\n- Week: 202612\n- Promotion: Personalised Prices (Ref: 98829437)\n- Agreed Funding Rate: \u00a30.20 per unit\n- Actual Sales Volume: 10 units (per Tesco sales records)\n- **Calculation: 10 units \u00d7 \u00a30.20 = \u00a32.00 ex-VAT \u2713**\n\nYour records indicate 8 units sold; however, Tesco's sales_breakdown table confirms 10 units were sold during this period for this product-supplier combination. The invoice amount of **\u00a32.00** is therefore correct and reflects the actual promotional funding due.\n\nThe invoice remains valid and we ask that you proceed with payment accordingly.\n\nIf you would like to discuss this further, please don't hesitate to contact us.\n\nBest regards,\nTesco Margin Discovery Team\nCalculation ID: YCCP-41",
+  "calculation_id": "YCCP-41",
+  "sent_at": "20260405T072713"
+}

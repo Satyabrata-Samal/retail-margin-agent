@@ -1,0 +1,7 @@
+{
+  "to": "raj.mehta@diageo.com",
+  "subject": "Re: Invoice YCCP-42 - Dispute Resolution",
+  "body": "Dear Raj,\n\nThank you for raising your dispute regarding invoice YCCP-42. We have completed a thorough analysis of your concern and can confirm that the invoice calculation is correct.\n\n**INVOICE DETAILS:**\n- Calculation ID: YCCP-42\n- Product (TPNB): 87742417 (CAPTAIN MORGAN TIKI MANGO & PINEAPPLE APPLE 700ML)\n- Promotion Reference: 98829437 (Personalised Prices)\n- Week: 202613\n\n**ANALYSIS FINDINGS:**\n\nOur system records show the following contracted funding terms for this promotion:\n- **Agreed Funding Rate: \u00a30.20 per unit** (as per BUYER agreement dated 2026-03-11 to 2026-05-26)\n- Sales Volume: 8 units\n- **Correct Calculation: 8 units \u00d7 \u00a30.20 = \u00a31.60**\n\nThe invoice amount of \u00a31.60 is therefore accurate and reflects the agreed contract terms that are held in our database.\n\nWhile we understand you've indicated the agreed rate was \u00a30.16 per unit, our records do not reflect this figure. The contracted rate of \u00a30.20 per unit has been confirmed by the BUYER agreement on file.\n\nShould you have documentation showing a different agreement rate, please share this with us and we will be happy to review it further.\n\nBest regards,\n**Tesco Margin Discovery Team**",
+  "calculation_id": "YCCP-42",
+  "sent_at": "20260405T073556"
+}

@@ -2,3 +2,4 @@ langgraph
 anthropic
 supabase
 dotenv
+pathlib
