@@ -1,0 +1,7 @@
+{
+  "to": "tesco.invoices@colgate.com",
+  "subject": "Re: Invoice YCCP-44 - Calculation Verification Complete",
+  "body": "Dear COLGATE-PALMOLIVE (UK) LIMITED,\n\nThank you for raising your dispute regarding invoice YCCP-44. We have completed a thorough review of the calculation and can confirm that the invoice amount is correct.\n\n**Invoice Details:**\n- Calculation ID: YCCP-44\n- Product: COLGATE TOTAL WHITENING TOOTHPASTE 125ML (TPNB: 52341876)\n- Week: 202612\n- Promotion: Spring Clean Price Reduction (Ref: 98834521)\n\n**Verified Calculation:**\n- Promotional Sales Volume: 50 units\n- Agreed Funding Rate: \u00a30.20 per unit (per agreement 98834521)\n- Total Funding: 50 units \u00d7 \u00a30.20/unit = **\u00a310.00**\n- Recorded Invoice Amount: **\u00a310.00** \u2713\n\nAll calculation components have been cross-verified against our database:\n- Supplier sales volume for week 202612: 50 units confirmed\n- Promotion funding dates (11 Mar \u2013 1 Apr 2026) align with week 202612\n- Funding rate matches the active agreement terms\n\nThe invoice amount of \u00a310.00 is mathematically correct and accurately reflects the terms of agreement 98834521. No adjustment is required.\n\nIf you have any further questions or concerns regarding this calculation, please contact us with supporting documentation.\n\nBest regards,\n**Tesco Margin Discovery Team**\nSupervisor Agent",
+  "calculation_id": "YCCP-44",
+  "sent_at": "20260406T065840"
+}

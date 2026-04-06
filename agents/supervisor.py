@@ -107,6 +107,8 @@ from utils.conversation import run_conversation_loop
 from clients.claude_client import get_claude_client
 from agents.analyst import run_analyst
 from config import MODEL, MAX_TOKENS, MAX_AGENT_TURNS
+from datetime import datetime, timezone
+from knowledge_graph import _read_knowledge_graph, _update_knowledge_graph
 import textwrap
 
 memory = MemoryToolHandler(base_path=MEMORY_BASE_PATH)
@@ -178,6 +180,8 @@ def _write_analyst_findings(calculation_id: str, findings: str) -> None:
         new_str=f"## Analyst Findings\n{findings}"
     )
 
+
+
 def run_supervisor(email_id: str) -> str:
     """
     Full dispute lifecycle for one email.
@@ -194,6 +198,21 @@ def run_supervisor(email_id: str) -> str:
     email = read_email(email_id)
     if "error" in email:
         return f"Error reading email: {email['error']}"
+
+    calc = get_calculation(email["calculation_id"])
+    if calc:
+        supplier_name = calc[0].get("funded_supplier_name", "")
+        category = calc[0].get("category", "")
+        kg = _read_knowledge_graph(supplier_name, category)
+    else:
+        kg = ""
+
+    # Pass to analyst
+    analyst_findings = run_analyst(
+        calculation_id=calculation_id,
+        dispute_context=email["body"],
+        supplier_knowledge=kg
+    )
 
     calculation_id = email["calculation_id"]
     print(f"\n📨 Dispute received for: {calculation_id}")
@@ -243,30 +262,19 @@ def run_supervisor(email_id: str) -> str:
         verbose=True
     )
 
+    _update_knowledge_graph(
+    supplier_name=supplier_name,
+    category=category,
+    calc_id=calculation_id,
+    week=calc[0].get("year_week_number"),
+    outcome="CORRECT",        # parse from analyst_findings
+    summary="Volume dispute — supplier claimed X, confirmed Y",
+    agent_notes="Accepts explanation with sales breakdown attached"
+    )
+
+
     return response.content[0].text
 
 
-def _compress_ticket(self,memory, calculation_id, content) -> str:
-        client = anthropic.Anthropic()
-        response = client.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=1000,
-            messages=[{
-                "role": "user",
-                "content": f"""Compress this ticket. Keep: supplier_id, 
-                calculation_id, loop_count, all analyst findings, 
-                all decisions made, thread summary. 
-                Remove: raw SQL output, verbose reasoning.
-                
-                Ticket:
-                {content}"""
-            }]
-        )
-        compressed = response.content[0].text
-        self.execute(
-            command="create",
-            path=f"/memories/active_tickets/{calculation_id}.md",
-            file_text=compressed
-        )
-        return compressed
+
 
