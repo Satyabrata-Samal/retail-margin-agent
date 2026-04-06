@@ -41,6 +41,31 @@ sales: year_week_number, tpnb, sales_supplier, sup_sales_volume,
 calculations: calculation_id, funded_supplier_number, promo_sales_volume,
               total_supplier_promotion_funding_ex_vat,
               main_subsidiary_alternate, deal_status, final_check
+
+## When to return NOT_CONCLUSIVE
+
+Even if the DB data looks correct, return NOT_CONCLUSIVE when:
+
+1. Supplier claims a COMMERCIAL dispute — cancellation, contract terms, 
+   verbal agreements, or anything requiring original contract documents
+   to verify. The DB cannot prove a cancellation happened outside the 
+   system.
+
+2. Supplier disputes the EXISTENCE of an agreement — "we never agreed 
+   to this". Even if an agreement row exists in DB, only the MD team 
+   can verify the original signed contract.
+
+3. Data conflict cannot be resolved by SQL alone — conflicting signals 
+   across tables with no clear winner.
+
+## Key distinction
+
+DATA dispute  → agent can resolve (volume, rate, dates, maths)
+COMMERCIAL dispute → agent cannot resolve → NOT_CONCLUSIVE → escalate
+
+Supplier saying "promotion was cancelled" is a COMMERCIAL dispute.
+DB showing approved does not override a commercial cancellation claim.
+The MD team needs to verify with the commercial team and contract docs.
 """
 
 ANALYST_TOOLS = [

@@ -2,74 +2,58 @@
 status: open
 supplier_id: raj.mehta@diageo.com
 loop_count: 0
-created_at: 2026-04-05T07:31:35.069064+00:00
+created_at: 2026-04-05T07:46:45.149291+00:00
 
 ## Dispute
 Hi, we are disputing invoice YCCP-41 for Captain Morgan Tiki Mango 700ml week 202612. Our records show 8 units sold, not 10. Please review and correct the invoice amount from £2.00 to £1.60.
 
 ## Analyst Findings
-Perfect! I now have all the key information. Let me analyze this dispute:
+Perfect. Now I have all the data I need. Let me analyze the dispute:
 
 ## DISPUTE ANALYSIS: YCCP-41
 
-### 1. OUTCOME: **CORRECT**
+### OUTCOME: **CORRECT**
 
----
+### EVIDENCE:
 
-### 2. EVIDENCE (from database):
+From the database:
+- **Product**: CAPTAIN MORGAN TIKI MANGO & P/APPLE 700ML (TPNB: 87742417)
+- **Week**: 202612
+- **Supplier**: DIAGEO GREAT BRITAIN (Supplier ID: 60198, Parent: 4958409)
+- **Promotion**: Personalised Prices (Ref: 98829437)
+- **Agreed Funding Rate**: £0.20 per unit
+- **Actual Sales Volume (DB)**: 10 units
+- **Calculation**: 10 units × £0.20/unit = **£2.00** ✓
+- **Supplier Claims**: 8 units sold = £1.60
 
-| Field | Value |
-|-------|-------|
-| **Calculation ID** | YCCP-41 |
-| **Product** | 87742417 - CAPTAIN MORGAN TIKI MANGO & P/APPLE 700ML |
-| **Week** | 202612 |
-| **Supplier** | 60198 (DIAGEO GREAT BRITAIN - subsidiary of 4958409) |
-| **Promotion** | 98829437 (Personalised Prices) |
-| **Agreed funding rate** | £0.20 per unit |
-| **Actual sales volume (DB)** | **10 units** |
-| **Supplier's claimed volume** | 8 units |
-| **Invoice calculation (DB)** | 10 units × £0.20 = **£2.00** ✓ |
-| **Supplier's proposed adjustment** | 8 units × £0.20 = £1.60 |
+### REASONING:
 
----
+The calculation in YCCP-41 is **CORRECT** and the supplier's claim is **WRONG**:
 
-### 3. REASONING:
+1. **Sales Data Verification**: The sales breakdown from our database shows 10 units were sold in week 202612, not 8 units as the supplier claims. Both the `sup_sales_volume` (10) and `tot_sales_volume` (10) fields confirm this.
 
-The supplier claims 8 units were sold, but the **database sales record clearly shows 10 units** were sold in week 202612:
-- Sales volume in system: **sup_sales_volume = 10**
-- Total sales volume: **tot_sales_volume = 10**
-- Sales value: £158.14 (ex-VAT) for those 10 units
+2. **Funding Rate Confirmation**: The agreed promotion funding is £0.20 per unit (confirmed in the agreements table).
 
-The calculation is **correct**:
-- 10 units × £0.20/unit (agreed funding rate) = £2.00 ✓
+3. **Calculation Check**: 
+   - Our calculation: 10 units × £0.20 = **£2.00** (as shown in `total_supplier_promotion_funding_ex_vat`)
+   - Supplier's claim: 8 units × £0.20 = £1.60
 
-**The supplier's records are inaccurate.** Their claim of 8 units sold does not match Tesco's point-of-sale data. The invoice amount of £2.00 is correctly calculated based on actual sales volumes.
+4. **Data Source**: This is Tesco's own sales data, not supplier-submitted data, so it represents the actual point-of-sale volume recorded at checkout.
 
-The calculation status is "READY FOR INVOICING" and all checks have passed.
+The invoice YCCP-41 should remain at **£2.00**. The supplier's records appear to be inaccurate.
 
 ## Supervisor Notes
-ANALYSIS COMPLETE - CALCULATION CONFIRMED AS CORRECT
+DISPUTE RESOLUTION COMPLETED
 
-Analyst verdict: CORRECT
+Status: CORRECT - Invoice upheld at £2.00
 
-Key findings:
-- Tesco database records: 10 units sold (week 202612)
-- Supplier claimed: 8 units sold
-- Agreed funding rate: £0.20 per unit
-- Correct invoice total: 10 × £0.20 = £2.00
-- Supplier's proposed total: 8 × £0.20 = £1.60 (INCORRECT)
-
-Action taken:
+Action Taken:
+- Analyst confirmed calculation is correct (10 units × £0.20/unit = £2.00)
 - Professional explanation email sent to supplier (raj.mehta@diageo.com)
-- Email includes exact numbers, funding rate, and confirmed calculation
-- Supplier advised that their records do not match Tesco POS data
-- Invoice stands at £2.00 - no adjustment approved
+- Supplier's claim of 8 units rejected; POS data confirms 10 units sold
+- Supplier advised to review internal sales records for discrepancy
 
-Status: explanation_sent
+Ticket Status: explanation_sent
 
 ## Thread
-[2026-04-05 - Supervisor] CORRECT calculation confirmed. Explanation email sent to supplier at raj.mehta@diageo.com detailing:
-- Actual sales volume: 10 units (not 8 as claimed)
-- Correct invoice: £2.00 (not £1.60)
-- Funding rate: £0.20 per unit (agreed)
-- Invoice is valid and stands. Supplier records are inaccurate.
+[empty]

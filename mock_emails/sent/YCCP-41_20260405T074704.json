@@ -1,0 +1,7 @@
+{
+  "to": "raj.mehta@diageo.com",
+  "subject": "Re: Invoice YCCP-41 - Dispute Resolution - CORRECT",
+  "body": "Dear Raj,\n\nThank you for disputing invoice YCCP-41. We have completed a thorough review of your claim and can confirm that our invoice calculation is correct.\n\n**DISPUTE OUTCOME: INVOICE UPHELD AT \u00a32.00**\n\n**Invoice Details:**\n- Product: CAPTAIN MORGAN TIKI MANGO & P/APPLE 700ML (TPNB: 87742417)\n- Week: 202612\n- Agreed Funding Rate: \u00a30.20 per unit\n- Actual Sales Volume: 10 units (per Tesco POS records)\n- **Calculation: 10 units \u00d7 \u00a30.20/unit = \u00a32.00** \u2713\n\n**Analysis:**\nOur point-of-sale sales data for week 202612 confirms 10 units were sold, not 8 units as shown in your records. This is verified through both our supplier and total sales volume fields in our system.\n\nThe funding rate of \u00a30.20 per unit is correct per the agreed Personalised Prices promotion (Ref: 98829437).\n\nTherefore, the invoice amount of **\u00a32.00 is accurate** and should remain unchanged. We recommend reviewing your internal sales records for week 202612 to identify the discrepancy between your data (8 units) and our point-of-sale records (10 units).\n\nIf you have any further questions or additional evidence to support your position, please let us know and we will be happy to review.\n\nBest regards,\nTesco Margin Discovery Team\nCalculation ID: YCCP-41",
+  "calculation_id": "YCCP-41",
+  "sent_at": "20260405T074704"
+}
