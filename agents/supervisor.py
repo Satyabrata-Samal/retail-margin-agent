@@ -108,7 +108,8 @@ from clients.claude_client import get_claude_client
 from agents.analyst import run_analyst
 from config import MODEL, MAX_TOKENS, MAX_AGENT_TURNS
 from datetime import datetime, timezone
-from knowledge_graph import _read_knowledge_graph, _update_knowledge_graph
+from utils.knowledge_graph import _read_knowledge_graph, _update_knowledge_graph
+from tools.db_tools import get_calculation
 import textwrap
 
 memory = MemoryToolHandler(base_path=MEMORY_BASE_PATH)
@@ -199,21 +200,6 @@ def run_supervisor(email_id: str) -> str:
     if "error" in email:
         return f"Error reading email: {email['error']}"
 
-    calc = get_calculation(email["calculation_id"])
-    if calc:
-        supplier_name = calc[0].get("funded_supplier_name", "")
-        category = calc[0].get("category", "")
-        kg = _read_knowledge_graph(supplier_name, category)
-    else:
-        kg = ""
-
-    # Pass to analyst
-    analyst_findings = run_analyst(
-        calculation_id=calculation_id,
-        dispute_context=email["body"],
-        supplier_knowledge=kg
-    )
-
     calculation_id = email["calculation_id"]
     print(f"\n📨 Dispute received for: {calculation_id}")
 
@@ -221,11 +207,25 @@ def run_supervisor(email_id: str) -> str:
     _create_ticket(calculation_id, email)
     print(f"📁 Ticket created: {calculation_id}")
 
-    # Step 3 — run analyst
+    # Step 3 — read knowledge graph
+    calc = get_calculation(calculation_id)
+    if calc:
+        supplier_name = calc[0].get("funded_supplier_name", "")
+        category = calc[0].get("category", "")
+        kg = _read_knowledge_graph(supplier_name, category)
+        week = calc[0].get("year_week_number")
+    else:
+        supplier_name = ""
+        category = ""
+        kg = ""
+        week = None
+
+    # Step 4 — run analyst
     print(f"\n🔍 Running analyst...")
     analyst_findings = run_analyst(
         calculation_id=calculation_id,
-        dispute_context=email["body"]
+        dispute_context=email["body"],
+        supplier_knowledge=kg 
     )
     print(f"\n✅ Analyst complete")
 

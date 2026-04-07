@@ -3,3 +3,8 @@
 /tests
 /notes
 /notebooks
+__pycache__/
+*.pyc
+memory_storage/
+mock_emails/sent/
+.DS_Store

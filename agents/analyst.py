@@ -185,9 +185,9 @@ def analyst_tool_executor(tool_name: str, tool_input: dict) -> str:
     except Exception as e:
         return f"Tool error: {str(e)}"
 
-def run_analyst(calculation_id: str, dispute_context: str) -> str:
+def run_analyst(calculation_id: str, dispute_context: str, supplier_knowledge: str) -> str:
     """
-    Analyse a dispute and return structured findings.
+    Analyse a dispute and return structured findings. Refer supplier_knowledge, which is the doc of previous resolutions of supplier-category level.
 
     Args:
         calculation_id: e.g. "YCCP-41"
@@ -205,6 +205,8 @@ def run_analyst(calculation_id: str, dispute_context: str) -> str:
 
         Supplier message:
         {dispute_context}
+
+        For reference previous dispute & resolution doc with patterns:{supplier_knowledge}
 
         Please analyse this dispute and return:
         1. OUTCOME: CORRECT / WRONG / NOT_CONCLUSIVE

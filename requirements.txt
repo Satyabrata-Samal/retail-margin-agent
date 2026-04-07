@@ -1,5 +1,5 @@
-langgraph
 anthropic
 supabase
 dotenv
 pathlib
+streamlit
